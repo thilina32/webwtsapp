@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animated Dashboard</title>
+    <style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+body, html {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #71b7e6, #9b59b6);
+}
+
+.dashboard-container {
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+    width: 350px;
+    animation: fadeIn 1s ease-in-out;
+}
+
+.dashboard-container h1 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: #333;
+}
+
+.dashboard-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.input-group {
+    position: relative;
+    margin-bottom: 1.5rem;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background: #f9f9f9;
+    outline: none;
+    transition: border-color 0.3s;
+}
+.input-group textarea{
+    width: 100%;
+    padding: 10px;
+    min-height: 100px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background: #f9f9f9;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+.input-group input:focus {
+    border-color: #9b59b6;
+}
+
+.input-group label {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    pointer-events: none;
+    transition: all 0.3s;
+    color: #999;
+}
+.input-group span{
+    margin-left: 10px;
+    pointer-events: none;
+    transition: all 0.3s;
+    color: #9b59b6;
+    font-size: 12px;
+}
+
+.input-group input:focus + label,
+.input-group input:not(:placeholder-shown) + label {
+    top: -20px;
+    left: 10px;
+    color: #9b59b6;
+    font-size: 12px;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background: #9b59b6;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+button:hover {
+    background: #8e44ad;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+img{
+    width: 100px;
+    height: 100px;
+    margin-bottom: 50px;
+    display: block;
+    margin-left: calc(50% - 50px);
+    border-radius: 50%;
+}
+</style>
+</head>
+<body>
+    <div class="dashboard-container">
+        <h1>HI Thilina kavishan</h1>
+        <img src="https://i.ibb.co/Jx7b6mZ/Picsart-24-06-06-18-44-20-881.jpg" alt="">
+        <form  action="/send" method="post" class="dashboard-form">
+            <div class="input-group">
+                <input type="text" name="key" id="username" required>
+                <label for="username">Enter Key</label>
+            </div>
+            <div class="input-group">
+                <input name="nb" type="tel" id="phone" required>
+                <label for="phone">Phone Number</label>
+            </div>
+            <div class="input-group">
+                <span for="textInput">Enter message</span>
+                <textarea name="text" type="text" id="textInput" required></textarea>
+                
+            </div>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+</body>
+</html>
