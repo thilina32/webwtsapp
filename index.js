@@ -72,7 +72,7 @@ async function connectWhatsApp() {
     const auth = await useMultiFileAuthState('session');
     socket = makeWASocket({
         printQRInTerminal: true,
-        browser: ["thiloina", 'safari', "1.0.0"],
+        browser: ["thilina", 'safari', "1.0.0"],
         auth: auth.state,
         logger: pino({ level: 'silent' })
     });
@@ -85,40 +85,6 @@ async function connectWhatsApp() {
             console.log('bot start');
         } else if (connection === 'close') {
             await connectWhatsApp();
-        }
-    });
-
-    socket.ev.on('messages.upsert', async ({ messages, type }) => {
-        try {
-            delete require.cache[require.resolve('./plugins/alive.js')];
-            let helder = require('./plugins/alive.js');
-            const msgType = gettype(messages[0]);
-            let d = {
-                jid: messages[0].key.remoteJid,
-                formMe: messages[0].key.fromMe
-            };
-            if (msgType === 'textMessage') {
-                d.text = messages[0].message.conversation;
-            }
-            if (messages[0].key.participant) {
-                d.group = messages[0].key.remoteJid;
-                d.uid = messages[0].key.participant;
-            } else {
-                d.group = false;
-                d.uid = messages[0].key.remoteJid;
-            }
-            try {
-                console.log(messages[0].key.remoteJid);
-                if (helder.user.includes(messages[0].key.remoteJid)) {
-                    helder(socket, messages[0], d);
-                }
-
-                
-            } catch (error) {
-                console.error('An error occurred:', error);
-            }
-        } catch (error) {
-            console.error('An error occurred:', error);
         }
     });
 }
